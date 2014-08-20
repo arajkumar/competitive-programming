@@ -32,16 +32,13 @@ std::ostream& operator << (std::ostream& out, std::vector<T>& v) {
 }
 
 int main(int argc, char** argv) {
-  const int l = 10000;
+  const int l = 100000;
 
   std::vector<int> int_ip1;
   for (int i = 0; i < l; i++) {
     int_ip1.push_back(rand() * 1000 + 1);
   }
-  int_ip1.push_back(10);
-  int_ip1.push_back(1);
-  int_ip1.push_back(100);
-  int_ip1.push_back(3);
+
   // prepare expected
   auto int_expected1 = int_ip1;
   std::sort(int_ip1.begin(), int_ip1.end());
