@@ -1,22 +1,20 @@
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
 namespace {
-template <class T> 
-void swap(T& a, T& b) {
-  T temp = a;
-  a = b;
-  b = temp;
-}
-
 template <class T>
 void insertion_sort(std::vector<T>& input) {
-  for(int key = 1; key < input.size(); key++) {
-    for(int p = 0; p <= key; p++) {
-      if (input[key] < input[p])
-        swap(input[key], input[p]);
+  for(int i = 1; i < input.size(); i++) {
+    auto key = input[i];
+    int p = i - 1;
+    while(p >= 0 && key < input[p]) {
+      input[p + 1] = input[p];
+      p--;
     }
+    input[p + 1] = key;
   }
 }
 
@@ -32,17 +30,19 @@ std::ostream& operator << (std::ostream& out, std::vector<T>& v) {
 }
 
 int main(int argc, char** argv) {
+  std::srand(std::time(0));
   const int l = 100000;
 
   std::vector<int> int_ip1;
   for (int i = 0; i < l; i++) {
-    int_ip1.push_back(rand() * 1000 + 1);
+    int_ip1.push_back(std::rand() * 1000 + 1);
   }
 
   // prepare expected
   auto int_expected1 = int_ip1;
-  std::sort(int_ip1.begin(), int_ip1.end());
-  insertion_sort(int_expected1);
+  std::sort(int_expected1.begin(), int_expected1.end());
+  insertion_sort(int_ip1);
+  // std::cout << int_ip1 << "!=" << int_expected1 <<"\n";
   std::cout << (int_ip1  == int_expected1) << std::endl;
   return 0;
 }
