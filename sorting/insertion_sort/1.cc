@@ -19,7 +19,6 @@ void insertion_sort(std::vector<T>& input) {
     }
   }
 }
-}
 
 // overload << for vector
 template<class T>
@@ -29,6 +28,7 @@ std::ostream& operator << (std::ostream& out, std::vector<T>& v) {
     out << v[i] << (i + 1 == v.size() ? "":",");
   out << "], length:" << v.size();
   return out;
+}
 }
 
 int main(int argc, char** argv) {
