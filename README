@@ -1,1 +1,21 @@
 Just a scratch pad with dump solutions for problems. :)
+
+Dependencies
+============
+It uses the same build infrastruture like Chromium Opensource Project.
+
+You must have depot_tools installed as described in http://www.chromium.org/developers/how-tos/install-depot-tools.
+
+Building
+========
+1. gclient config git@github.com:ararunprasad/myscratchpad.git
+
+2. gclient sync
+
+3. cd myscratchpad
+
+4. buildtools/linux64/gn gen out
+
+5. ninja -C out
+
+6. out/sorting (sample)

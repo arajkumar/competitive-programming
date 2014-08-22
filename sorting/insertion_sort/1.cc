@@ -7,7 +7,7 @@
 namespace {
 template <class T>
 void insertion_sort(std::vector<T>& input) {
-  for(int i = 1; i < input.size(); i++) {
+  for(size_t i = 1; i < input.size(); i++) {
     auto key = input[i];
     int p = i - 1;
     while(p >= 0 && key < input[p]) {

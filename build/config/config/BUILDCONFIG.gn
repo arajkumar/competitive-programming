@@ -27,7 +27,7 @@ declare_args() {
   # Component build.
   is_component_build = false
   # Debug build.
-  is_debug = false
+  is_debug = true
 
   # Set to true when compiling with the Clang compiler. Typically this is used
   # to configure warnings.
