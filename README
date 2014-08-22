@@ -19,3 +19,8 @@ Building
 5. ninja -C out
 
 6. out/sorting (sample)
+
+TODO
+====
+1. gtest based test running
+2. solving some good real problems :P
