@@ -1,0 +1,5 @@
+executable("sorting") {
+  sources = [
+    "inserstion_sort/1.cc",
+  ]
+}

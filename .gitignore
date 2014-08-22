@@ -2,5 +2,8 @@
 *.out
 *.o
 *.a
+out-*
+out_*
+out
 
 
