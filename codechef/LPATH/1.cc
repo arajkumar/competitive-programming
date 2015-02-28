@@ -19,14 +19,17 @@ void print_d(int n) {if(n<0){n=-n;pc('-');}int i=10;char output_buffer[10];do{ou
 
 #define printf if (0) printf
 
-size_t grid[201][201];
+size_t grid[201][201], dp_cache[201][201];
 size_t rc, cc;
 
 size_t find(long r, long c, size_t n) {
-  if ( r < 0 || c < 0 || r >= rc || c >= cc) {
+  if (r < 0 || c < 0 || r >= rc || c >= cc) {
     printf("return r=%ld c=%ld n=%ld\n", r, c, n);
     return 0;
   }
+
+  if (dp_cache[r][c] != 0)
+    return dp_cache[r][c];
   printf("find r=%ld c=%ld n=%ld gr=%ld\n", r, c, n, grid[r][c]);
   if (grid[r][c] != n)
     return n;
@@ -50,6 +53,7 @@ size_t find(long r, long c, size_t n) {
   res_max = std::max(res_max, find(r + 1, c + 1, n + 1));
 
   printf("res_max=%ld\n", res_max);
+  dp_cache[r][c] = res_max;
   return res_max;
 }
 
@@ -62,6 +66,7 @@ int main(int argc, char **argv) {
     cc = scan_d();
     for (size_t r = 0; r < rc; r++) {
       for (size_t c = 0; c < cc; c++) {
+        dp_cache[r][c] = 0;
         grid[r][c] = scan_d();
       }
     }
